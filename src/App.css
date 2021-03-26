@@ -1,31 +1,12 @@
 .app-wrapper {
-  display: grid;
-
-  grid-template-areas: 
-  "h h"
-  "n c";
-
-  grid-template-rows: 60px 1fr;
-  grid-template-columns: 2fr 10fr;
-  /* grid-gap: 10px; */
-
+    display: grid;
+    grid-template-areas: "h h" "n c";
+    grid-template-rows: 60px 1fr;
+    grid-template-columns: 2fr 10fr;
+    /* grid-gap: 10px; */
 }
 
-.header {
-  grid-area: h;
-  background: blue;
-}
-
-.header img {
-  width: 50px;
-}
-
-.nav {
-  grid-area: n;
-  background: green;
-}
-
-.content {
-  grid-area: c;
-  background-color: lime;
+.app-wrapper__content {
+    grid-area: c;
+    background-color: rgb(180, 255, 180);
 }
