@@ -3,10 +3,13 @@
     background: green;
 }
 
-.nav_item {}
+.nav_item:hover {
+    opacity: 0.7;
+}
 
 .nav_item__link {
     text-decoration: none;
+    color: #fff;
 }
 
 .nav_item__link.active {

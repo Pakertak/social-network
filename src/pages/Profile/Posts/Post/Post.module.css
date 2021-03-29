@@ -1,7 +1,7 @@
 .post {
     display: grid;
     grid-row-gap: 10px;
-    margin: 20px;
+    margin: 20px 0;
     padding: 30px; 
     background-color: honeydew;
     border-radius: 10px;

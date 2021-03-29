@@ -1,21 +1,37 @@
+import { Route, Router } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 import Header from './layouts/Header/Header';
 import Nav from './layouts/Nav/Nav';
 import Dialogs from './pages/Dialogs/Dialogs';
 import Profile from './pages/Profile/Profile';
 
-const App = () => {
+const App = ({
+    postsData,
+    dialogsData,
+    messagesData
+}) => {
+
     return (
-        <div className='app-wrapper' >
-            <Header />
-            <Nav />
+        <BrowserRouter>
+            <div className='app-wrapper' >
+                <Header />
+                <Nav />
+                <div className="app-wrapper__content">
 
-            <div className="app-wrapper__content">
-                {/* <Profile /> */}
+                    <Route path="/dialogs" render={
+                        () => <Dialogs
+                            dialogsData={dialogsData}
+                            messagesData={messagesData}
+                        />} />
 
-                <Dialogs />
+                    <Route path="/profile" render={
+                        () => <Profile
+                            postsData={postsData}
+                        />} />
+                </div>
             </div>
-        </div>
+        </BrowserRouter>
     );
 }
 
