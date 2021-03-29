@@ -7,7 +7,9 @@ import Dialogs from './pages/Dialogs/Dialogs';
 import Profile from './pages/Profile/Profile';
 
 const App = ({
-    state
+    state,
+    addPost,
+    updateNewPost
 }) => {
 
     return (
@@ -25,6 +27,8 @@ const App = ({
                     <Route path="/profile" render={
                         () => <Profile
                             state={state.profilePage}
+                            addPost={addPost}
+                            updateNewPost={updateNewPost}
                         />} />
                 </div>
             </div>

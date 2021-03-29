@@ -3,26 +3,33 @@ import React from 'react';
 import classes from './Textarea.module.css';
 
 const Textarea = ({
-    className, disabled, defaultValue, ...attrs
+    className, 
+    disabled, 
+    textareaRef,
+    onChange,
+    ...attrs
 }) => {
 
-    const classNames = `${classes.txtarea} 
+    const classNames = `${classes.textarea} 
     ${className ? classes[className] : ''}`;
 
     return (
         <textarea
+            ref={textareaRef}
             className={classNames}
             disabled={disabled}
+            onChange={onChange}
             {...attrs}
-            defaultValue={defaultValue}
+            
         />
     );
 };
 
 Textarea.defaultProps = {
+    textareaRef: React.createRef(),
+    onChange: () => {},
     className: '',
-    disabled: false,
-    defaultValue: ''
+    disabled: false
 };
 
 export default Textarea;

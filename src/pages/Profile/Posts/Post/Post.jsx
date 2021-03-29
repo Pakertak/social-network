@@ -1,7 +1,7 @@
 import classes from './Post.module.css';
 
 const Post = ({
-    message, title
+    message, title, likes
 }) => {
     return (
         <div className={classes.post}>
@@ -11,6 +11,10 @@ const Post = ({
             </div>
             <div className={classes.post_title}>{title}</div>
             <div className={classes.post_content}>{message}</div>
+            <div className={classes.likes}>
+                &#128156;&nbsp;
+                <span>{likes}</span>
+            </div>
         </div>
     );
 };
