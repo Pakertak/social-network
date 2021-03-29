@@ -7,9 +7,7 @@ import Dialogs from './pages/Dialogs/Dialogs';
 import Profile from './pages/Profile/Profile';
 
 const App = ({
-    postsData,
-    dialogsData,
-    messagesData
+    state
 }) => {
 
     return (
@@ -21,13 +19,12 @@ const App = ({
 
                     <Route path="/dialogs" render={
                         () => <Dialogs
-                            dialogsData={dialogsData}
-                            messagesData={messagesData}
+                            state={state.dialogsPage}
                         />} />
 
                     <Route path="/profile" render={
                         () => <Profile
-                            postsData={postsData}
+                            state={state.profilePage}
                         />} />
                 </div>
             </div>

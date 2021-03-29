@@ -3,7 +3,7 @@ import classes from './Nav.module.css';
 
 const Nav = () => {
     return (
-        <nav className={classes.nav}>
+        <nav className={`${classes.nav} container`}>
             <div className={classes.nav_item}>
                 <NavLink
                     to="/profile"

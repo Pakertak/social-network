@@ -3,8 +3,9 @@ import classes from './Profile.module.css';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 const Profile = ({
-    postsData
+    state
 }) => {
+    const postsData = state.postsData;
 
     return (
         <div className={`${classes.content} container`}>

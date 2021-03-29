@@ -3,13 +3,15 @@ import Dialog from './Dialog/Dialog';
 import classes from './Dialogs.module.css';
 
 const Dialogs = ({
-    dialogsData,
-    messagesData
+    state
 }) => {
+    const dialogsData = state.dialogsData;
+    const messagesData = state.messagesData;
 
     const dialogsItems = dialogsData.map(dialog => {
         return <Dialog
             key={dialog.id}
+            id={dialog.id}
             name={dialog.name}
         />
     });
