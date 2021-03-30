@@ -1,5 +1,4 @@
-import { Route, Router } from 'react-router';
-import { BrowserRouter } from 'react-router-dom';
+import { Route } from 'react-router';
 import './App.css';
 import Header from './layouts/Header/Header';
 import Nav from './layouts/Nav/Nav';
@@ -8,31 +7,28 @@ import Profile from './pages/Profile/Profile';
 
 const App = ({
     state,
-    addPost,
-    updateNewPost
+    dispatch
 }) => {
 
     return (
-        <BrowserRouter>
-            <div className='app-wrapper' >
-                <Header />
-                <Nav />
-                <div className="app-wrapper__content">
+        <div className='app-wrapper' >
+            <Header />
+            <Nav />
+            <div className="app-wrapper__content">
 
-                    <Route path="/dialogs" render={
-                        () => <Dialogs
-                            state={state.dialogsPage}
-                        />} />
+                <Route path="/dialogs" render={
+                    () => <Dialogs
+                        state={state.dialogsPage}
+                        dispatch={dispatch}
+                    />} />
 
-                    <Route path="/profile" render={
-                        () => <Profile
-                            state={state.profilePage}
-                            addPost={addPost}
-                            updateNewPost={updateNewPost}
-                        />} />
-                </div>
+                <Route path="/profile" render={
+                    () => <Profile
+                        state={state.profilePage}
+                        dispatch={dispatch}
+                    />} />
             </div>
-        </BrowserRouter>
+        </div>
     );
 }
 

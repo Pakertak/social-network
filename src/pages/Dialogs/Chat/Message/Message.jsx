@@ -1,11 +1,11 @@
 import classes from './Message.module.css';
 
 const Message = ({
-    content
+    text
 }) => {
     return (
         <div className={classes.message}>
-            {content}
+            {text}
         </div>
     );
 };

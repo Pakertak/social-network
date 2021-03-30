@@ -4,21 +4,19 @@ import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 const Profile = ({
     state,
-    addPost,
-    updateNewPost
+    dispatch
 }) => {
     const postsData = state.postsData;
     const newPost = state.newPost;
 
     return (
-        <div className={`${classes.content} container`}>
+        <div className={`${classes.profile} container page`}>
             <ProfileInfo />
             MainContent
             <Posts 
               postsData={postsData} 
               newPost={newPost}
-              addPost={addPost}
-              updateNewPost={updateNewPost}
+              dispatch={dispatch}
             />
         </div>
     );

@@ -3,12 +3,12 @@ import Button from '../../../components/Button/Button';
 import Textarea from '../../../components/Textarea/Textarea';
 import Post from './Post/Post';
 import classes from './Posts.module.css';
+import { addPostCreator, updateNewPostCreator } from '../../../redux/reducers/profile-reducer'
 
 const Posts = ({
     postsData,
     newPost,
-    addPost,
-    updateNewPost
+    dispatch
 }) => {
 
     const postsItems = [].concat(postsData).reverse().map(post => {
@@ -20,14 +20,15 @@ const Posts = ({
         />
     });
 
-    let newPostElement = React.createRef();
 
     const createNewPost = () => {
-        addPost(newPost.text);
+        dispatch(addPostCreator());
     };
 
     const onPostTextChange = (e) => {
-        updateNewPost({text: e.target.value});
+        dispatch(updateNewPostCreator({
+            text: e.target.value
+        }));
     };
 
     return (
@@ -35,8 +36,7 @@ const Posts = ({
             <div className={classes.header}>
                 <h3>My posts</h3>
                 <div className={classes.add}>
-                    <Textarea 
-                        textareaRef={newPostElement}
+                    <Textarea
                         value={newPost.text}
                         onChange={onPostTextChange}
                     />

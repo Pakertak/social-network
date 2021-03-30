@@ -1,3 +1,7 @@
+import dialogsReducer from "./reducers/dialogs-reducer";
+import profileReducer from "./reducers/profile-reducer";
+import sidebarReducer from "./reducers/sidebar-reducer";
+
 let store = {
     _state: {
         profilePage: {
@@ -11,7 +15,7 @@ let store = {
                 text: ''
             }
         },
-    
+
         dialogsPage: {
             dialogsData: [
                 { id: 1, name: 'Dmitry' },
@@ -20,42 +24,37 @@ let store = {
                 { id: 4, name: 'Viktor' }
             ],
             messagesData: [
-                { id: 1, content: 'Hi' },
-                { id: 2, content: 'How are you?' },
-                { id: 3, content: 'I\'m fine.' },
-                { id: 4, content: 'Good luck' }
-            ]
-        }
-    
-    },
+                { id: 1, text: 'Hi' },
+                { id: 2, text: 'How are you?' },
+                { id: 3, text: 'I\'m fine.' },
+                { id: 4, text: 'Good luck' }
+            ],
+            newMessage: {
+                text: ''
+            }
+        },
 
-    getState() {
-        return this._state;
+        sidebar: {}
+
     },
 
     _callSubscriber() {
         console.log('State has changed');
     },
 
-    addPost() {
-        let newPost = {
-            id: this._state.profilePage.postsData.length + 1,
-            message: this._state.profilePage.newPost.text,
-            title: 'React',
-            likes: 0
-        };
-        this._state.profilePage.postsData.push(newPost);
-        this._state.profilePage.newPost.text = '';
-        this._callSubscriber(this);
-    },
-
-    updateNewPost(newPost) {
-        this._state.profilePage.newPost.text = newPost.text;
-        this._callSubscriber(this);
+    getState() {
+        return this._state;
     },
 
     subscribe(observer) {
-        this._callSubscriber = observer; 
+        this._callSubscriber = observer;
+    },
+
+    dispatch(action) {
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.sidebar = sidebarReducer(this._state.sidebar, action);
+        this._callSubscriber(this);
     }
 };
 

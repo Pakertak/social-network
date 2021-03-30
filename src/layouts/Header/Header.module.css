@@ -1,8 +1,14 @@
 .header {
+    width: 100%;
     grid-area: h;
+    display: grid;
     background: blue;
+    position: fixed;
+    z-index: 10;
 }
 
 .header img {
     width: 50px;
+    justify-self: center;
+    align-self: center;
 }

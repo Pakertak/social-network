@@ -1,0 +1,7 @@
+.messageInput {
+    width: 100%;
+    display: grid;
+    justify-self: end;
+    grid-template-columns: 1fr 200px;
+    grid-column-gap: 40px;
+}
