@@ -23,7 +23,7 @@ const profileReducer = (state = initialState, action) => {
                 title: 'React',
                 likes: 0
             };
-            let stateCopy = {
+            return {
                 ...state,
                 postsData: [...state.postsData, newPostData],
                 newPost: {
@@ -31,17 +31,15 @@ const profileReducer = (state = initialState, action) => {
                     text: ''
                 }
             };
-            return stateCopy;
         }
         case UPDATE_NEW_POST: {
-            let stateCopy = {
+            return {
                 ...state,
                 newPost: {
                     ...state.newPost,
                     text: action.newPost.text
                 }
             };
-            return stateCopy;
         }
         default: return state;
     }
