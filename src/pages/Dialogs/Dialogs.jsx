@@ -3,11 +3,11 @@ import Dialog from './Dialog/Dialog';
 import classes from './Dialogs.module.css';
 
 const Dialogs = ({
-    state,
-    onMessageTextChange,
-    onSendMessageClick
+    dialogsPage,
+    changeMessageText,
+    sendMessage
 }) => {
-    const dialogsData = state.dialogsData;
+    const dialogsData = dialogsPage.dialogsData;
     const dialogsItems = dialogsData.map(dialog => {
         return <Dialog
             key={dialog.id}
@@ -21,10 +21,10 @@ const Dialogs = ({
                     {dialogsItems}
                 </div>
                 <Chat
-                    messagesData={state.messagesData}
-                    newMessage={state.newMessage}
-                    onMessageTextChange={onMessageTextChange}
-                    onSendMessageClick={onSendMessageClick}
+                    messagesData={dialogsPage.messagesData}
+                    newMessage={dialogsPage.newMessage}
+                    onMessageTextChange={changeMessageText}
+                    onSendMessageClick={sendMessage}
                 />
             </div>
     );

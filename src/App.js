@@ -16,14 +16,10 @@ const App = ({
             <div className="app-wrapper__content">
 
                 <Route path="/dialogs" render={
-                    () => <DialogsContainer
-                        store={store}
-                    />} />
+                    () => <DialogsContainer />} />
 
                 <Route path="/profile" render={
-                    () => <Profile
-                        store={store}
-                    />} />
+                    () => <Profile />} />
             </div>
         </div>
     );
