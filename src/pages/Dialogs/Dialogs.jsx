@@ -4,12 +4,10 @@ import classes from './Dialogs.module.css';
 
 const Dialogs = ({
     state,
-    dispatch
+    onMessageTextChange,
+    onSendMessageClick
 }) => {
     const dialogsData = state.dialogsData;
-    const messagesData = state.messagesData;
-    const newMessage = state.newMessage;
-
     const dialogsItems = dialogsData.map(dialog => {
         return <Dialog
             key={dialog.id}
@@ -23,9 +21,10 @@ const Dialogs = ({
                     {dialogsItems}
                 </div>
                 <Chat
-                    messagesData={messagesData}
-                    newMessage={newMessage}
-                    dispatch={dispatch}
+                    messagesData={state.messagesData}
+                    newMessage={state.newMessage}
+                    onMessageTextChange={onMessageTextChange}
+                    onSendMessageClick={onSendMessageClick}
                 />
             </div>
     );

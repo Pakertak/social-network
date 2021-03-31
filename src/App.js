@@ -2,12 +2,11 @@ import { Route } from 'react-router';
 import './App.css';
 import Header from './layouts/Header/Header';
 import Nav from './layouts/Nav/Nav';
-import Dialogs from './pages/Dialogs/Dialogs';
+import DialogsContainer from './pages/Dialogs/DialogsContainer';
 import Profile from './pages/Profile/Profile';
 
 const App = ({
-    state,
-    dispatch
+    store
 }) => {
 
     return (
@@ -17,15 +16,13 @@ const App = ({
             <div className="app-wrapper__content">
 
                 <Route path="/dialogs" render={
-                    () => <Dialogs
-                        state={state.dialogsPage}
-                        dispatch={dispatch}
+                    () => <DialogsContainer
+                        store={store}
                     />} />
 
                 <Route path="/profile" render={
                     () => <Profile
-                        state={state.profilePage}
-                        dispatch={dispatch}
+                        store={store}
                     />} />
             </div>
         </div>

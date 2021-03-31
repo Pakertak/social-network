@@ -3,12 +3,12 @@ import Button from '../../../components/Button/Button';
 import Textarea from '../../../components/Textarea/Textarea';
 import Post from './Post/Post';
 import classes from './Posts.module.css';
-import { addPostCreator, updateNewPostCreator } from '../../../redux/reducers/profile-reducer'
 
 const Posts = ({
     postsData,
     newPost,
-    dispatch
+    addPost,
+    updateNewPostText
 }) => {
 
     const postsItems = [].concat(postsData).reverse().map(post => {
@@ -22,13 +22,11 @@ const Posts = ({
 
 
     const createNewPost = () => {
-        dispatch(addPostCreator());
+        addPost();
     };
 
     const onPostTextChange = (e) => {
-        dispatch(updateNewPostCreator({
-            text: e.target.value
-        }));
+        updateNewPostText(e.target.value);
     };
 
     return (

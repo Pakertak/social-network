@@ -5,7 +5,8 @@ import MessageInput from './MessageInput/MessageInput';
 const Chat = ({
     messagesData,
     newMessage,
-    dispatch
+    onMessageTextChange,
+    onSendMessageClick
 }) => {
 
     let messagesItems = messagesData.map(message => {
@@ -22,7 +23,8 @@ const Chat = ({
             </div>
             <MessageInput 
                 newMessage={newMessage}
-                dispatch={dispatch}
+                onMessageTextChange={onMessageTextChange}
+                onSendMessageClick={onSendMessageClick}
             />
         </div>
 
