@@ -4,6 +4,7 @@ import Header from './layouts/Header/Header';
 import Nav from './layouts/Nav/Nav';
 import DialogsContainer from './pages/Dialogs/DialogsContainer';
 import Profile from './pages/Profile/Profile';
+import UsersContainer from './pages/Users/UsersContainer';
 
 const App = ({
     store
@@ -20,6 +21,9 @@ const App = ({
 
                 <Route path="/profile" render={
                     () => <Profile />} />
+
+                <Route path="/users" render={
+                    () => <UsersContainer />} />
             </div>
         </div>
     );

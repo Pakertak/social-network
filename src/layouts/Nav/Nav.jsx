@@ -20,21 +20,28 @@ const Nav = () => {
             </div>
             <div className={classes.nav_item}>
                 <NavLink
-                    to="news"
+                    to="/news"
                     className={classes.nav_item__link}
                     activeClassName={classes.active}
                 >News</NavLink>
             </div>
             <div className={classes.nav_item}>
                 <NavLink
-                    to="music"
+                    to="/music"
                     className={classes.nav_item__link}
                     activeClassName={classes.active}
                 >Music</NavLink>
             </div>
             <div className={classes.nav_item}>
                 <NavLink
-                    to="settings"
+                    to="/users"
+                    className={classes.nav_item__link}
+                    activeClassName={classes.active}
+                >Friends</NavLink>
+            </div>
+            <div className={classes.nav_item}>
+                <NavLink
+                    to="/settings"
                     className={classes.nav_item__link}
                     activeClassName={classes.active}
                 >Settings</NavLink>
