@@ -24,8 +24,9 @@ const Users = ({
             {
                 pages.map(p => (
                     <span
-                        className={currentPage === p && classes.selectedPage}
+                        className={currentPage === p ? classes.selectedPage : ''}
                         onClick={(e) => onPageChanged(p)}
+                        key={p}
                     >{p}</span>
                 ))
             }
