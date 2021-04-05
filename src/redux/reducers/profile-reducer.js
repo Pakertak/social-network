@@ -1,7 +1,9 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST = 'UPDATE-NEW-POST';
+const SET_USER_PROFILE = 'SET-USER-PROFILE';
 
 const initialState = {
+    profile: null,
     postsData: [
         { id: 1, title: 'React', message: 'My post is about react', likes: 21 },
         { id: 2, title: 'React', message: 'My post is about react', likes: 21 },
@@ -41,6 +43,12 @@ const profileReducer = (state = initialState, action) => {
                 }
             };
         }
+        case SET_USER_PROFILE: {
+            return {
+                ...state,
+                profile: action.profile
+            };
+        }
         default: return state;
     }
 };
@@ -53,5 +61,12 @@ export const updateNewPostCreator = (newPost) => ({
     type: UPDATE_NEW_POST,
     newPost
 });
+
+export const setUserProfile = (profile) => ({
+    type: SET_USER_PROFILE,
+    profile
+});
+
+
 
 export default profileReducer;

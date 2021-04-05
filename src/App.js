@@ -1,26 +1,24 @@
 import { Route } from 'react-router';
 import './App.css';
-import Header from './layouts/Header/Header';
+import HeaderContainer from './layouts/Header/HeaderContainer';
 import Nav from './layouts/Nav/Nav';
 import DialogsContainer from './pages/Dialogs/DialogsContainer';
-import Profile from './pages/Profile/Profile';
+import ProfileContainer from './pages/Profile/ProfileContainer';
 import UsersContainer from './pages/Users/UsersContainer';
 
-const App = ({
-    store
-}) => {
+const App = () => {
 
     return (
         <div className='app-wrapper' >
-            <Header />
+            <HeaderContainer />
             <Nav />
             <div className="app-wrapper__content">
 
                 <Route path="/dialogs" render={
                     () => <DialogsContainer />} />
 
-                <Route path="/profile" render={
-                    () => <Profile />} />
+                <Route path="/profile/:userId?" render={
+                    () => <ProfileContainer />} />
 
                 <Route path="/users" render={
                     () => <UsersContainer />} />

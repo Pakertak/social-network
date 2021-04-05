@@ -3,16 +3,17 @@ import classes from './Profile.module.css';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 const Profile = ({
-    store
+    profile,
+    setUserProfile
 }) => {
-
     return (
         <div className={`${classes.profile} container page`}>
-            <ProfileInfo />
-            MainContent
-            <PostsContainer 
-              store={store}
+            <ProfileInfo
+                profile={profile}
+                setUserProfile={setUserProfile}
             />
+            MainContent
+            <PostsContainer />
         </div>
     );
 };
