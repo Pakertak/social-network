@@ -12,10 +12,7 @@ const initialState = {
         { id: 2, title: 'React', message: 'My post is about react', likes: 21 },
         { id: 3, title: 'React', message: 'My post is about react', likes: 21 },
         { id: 4, title: 'React', message: 'My post is about react', likes: 21 },
-    ],
-    newPost: {
-        text: ''
-    }
+    ]
 };
 
 
@@ -62,7 +59,7 @@ export const setStatus = (status) => ({ type: SET_STATUS, status });
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 export const getUserProfile = (userId) => (dispatch) => {
-    usersAPI.getProfile(userId).then(data => {
+    profileAPI.getProfile(userId).then(data => {
         dispatch(setUserProfile(data));
     });
 };

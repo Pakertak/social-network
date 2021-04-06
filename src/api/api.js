@@ -19,11 +19,6 @@ export const usersAPI = {
 
     unfollow: (userId) => {
         return instance.delete(`follow/${userId}`).then(response => response.data);
-    },
-
-    getProfile: (userId = 16300) => {
-        console.warn('Obsolete method. Please profileAPI object.');
-        return profileAPI.getProfile(userId);
     }
 };
 
@@ -34,7 +29,7 @@ export const authAPI = {
 };
 
 export const profileAPI = {
-    getProfile: (userId) => {
+    getProfile: (userId = 16300) => {
         return instance.get(`profile/${userId}`).then(response => response.data);
     },
 
