@@ -1,28 +1,17 @@
 import Button from '../../../../components/Button/Button';
-import Textarea from '../../../../components/Textarea/Textarea';
 import classes from './MessageInput.module.css';
+import { Field, reduxForm } from 'redux-form';
 
-const MessageInput = ({
-    newMessage,
-    onMessageTextChange,
-    onSendMessageClick
-}) => {
-    const onMessageChange = (e) => {
-        onMessageTextChange({
-            text: e.target.value
-        });
-    };
+let MessageInput = (props) => {
 
     return (
-        <div className={classes.messageInput}>
-            <Textarea 
-                placeholder={'Enter your message'}
-                onChange={onMessageChange}
-                value={newMessage.text}
-            />
-            <Button onClick={onSendMessageClick}>Send</Button>
-        </div>
+        <form onSubmit={props.handleSubmit} className={classes.messageInput}>
+            <Field component={"textarea"} name={'newMessageText'} placeholder={'Enter your message'} />
+            <Button>Send</Button>
+        </form>
     );
 };
+
+MessageInput = reduxForm({form: 'dialogMessageInput'})(MessageInput)
 
 export default MessageInput;

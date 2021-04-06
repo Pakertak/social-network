@@ -16,17 +16,15 @@ const Dialogs = ({
         />
     });
     return (
-            <div className={`${classes.dialogs} container page`}>
-                <div className={classes.dialogs_list}>
-                    {dialogsItems}
-                </div>
-                <Chat
-                    messagesData={dialogsPage.messagesData}
-                    newMessage={dialogsPage.newMessage}
-                    onMessageTextChange={changeMessageText}
-                    onSendMessageClick={sendMessage}
-                />
+        <div className={`${classes.dialogs} container page`}>
+            <div className={classes.dialogs_list}>
+                {dialogsItems}
             </div>
+            <Chat
+                messagesData={dialogsPage.messagesData}
+                onSendMessageClick={sendMessage}
+            />
+        </div>
     );
 };
 

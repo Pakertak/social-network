@@ -14,7 +14,7 @@ const Users = ({
     unfollow
 }) => {
 
-    const pagesCount = Math.ceil(totalUsersCount / pageSize);
+    // const pagesCount = Math.ceil(totalUsersCount / pageSize);
     let pages = [];
 
     for (let i = 1; i <= 20; i++)

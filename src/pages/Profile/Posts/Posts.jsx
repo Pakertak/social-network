@@ -1,14 +1,11 @@
-import React from 'react'
-import Button from '../../../components/Button/Button';
-import Textarea from '../../../components/Textarea/Textarea';
+import React from 'react';
 import Post from './Post/Post';
+import PostInput from './PostInput/PostInput';
 import classes from './Posts.module.css';
 
 const Posts = ({
     postsData,
-    newPost,
-    addPost,
-    updateNewPostText
+    addPost
 }) => {
 
     const postsItems = [].concat(postsData).reverse().map(post => {
@@ -21,26 +18,16 @@ const Posts = ({
     });
 
 
-    const createNewPost = () => {
-        addPost();
-    };
-
-    const onPostTextChange = (e) => {
-        updateNewPostText(e.target.value);
+    const createNewPost = (values) => {
+        addPost({text: values.newPostText});
     };
 
     return (
         <div className="container">
             <div className={classes.header}>
                 <h3>My posts</h3>
-                <div className={classes.add}>
-                    <Textarea
-                        value={newPost.text}
-                        onChange={onPostTextChange}
-                    />
-                    <Button
-                        onClick={createNewPost}
-                    >Add post</Button>
+                <div>
+                    <PostInput onSubmit={createNewPost}/>
                 </div>
             </div>
             <div className={classes.posts}>

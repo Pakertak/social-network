@@ -4,10 +4,12 @@ import MessageInput from './MessageInput/MessageInput';
 
 const Chat = ({
     messagesData,
-    newMessage,
-    onMessageTextChange,
     onSendMessageClick
 }) => {
+
+    const onAddNewMessage = (values) => {
+        onSendMessageClick({text: values.newMessageText});
+    };
 
     let messagesItems = messagesData.map(message => {
         return <Message
@@ -22,9 +24,7 @@ const Chat = ({
                 {messagesItems}
             </div>
             <MessageInput 
-                newMessage={newMessage}
-                onMessageTextChange={onMessageTextChange}
-                onSendMessageClick={onSendMessageClick}
+                onSubmit={onAddNewMessage}
             />
         </div>
 

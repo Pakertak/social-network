@@ -3,11 +3,7 @@ import React from 'react';
 import classes from './Textarea.module.css';
 
 const Textarea = ({
-    className, 
-    disabled, 
-    onChange,
-    placeholder,
-    ...attrs
+    className
 }) => {
 
     const classNames = `${classes.textarea} 
@@ -16,20 +12,12 @@ const Textarea = ({
     return (
         <textarea
             className={classNames}
-            disabled={disabled}
-            onChange={onChange}
-            placeholder={placeholder}
-            {...attrs}
-            
         />
     );
 };
 
 Textarea.defaultProps = {
-    onChange: () => {},
-    className: '',
-    disabled: false,
-    placeholder: ''
+    className: ''
 };
 
 export default Textarea;
