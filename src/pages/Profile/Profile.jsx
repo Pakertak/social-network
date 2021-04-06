@@ -4,16 +4,23 @@ import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 const Profile = ({
     profile,
-    setUserProfile
+    status,
+    getStatus,
+    updateStatus
 }) => {
     return (
         <div className={`${classes.profile} container page`}>
             <ProfileInfo
                 profile={profile}
-                setUserProfile={setUserProfile}
+                status={status}
+                getStatus={getStatus}
+                updateStatus={updateStatus}
             />
-            MainContent
-            <PostsContainer />
+            {
+                profile
+                    ? <PostsContainer />
+                    : null
+            }
         </div>
     );
 };

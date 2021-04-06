@@ -1,36 +1,35 @@
 import React from 'react';
 import Profile from './Profile';
-import axios from 'axios';
 import { connect } from 'react-redux';
-import { setUserProfile } from '../../redux/reducers/profile-reducer';
+import { getUserProfile, getStatus, updateStatus } from '../../redux/reducers/profile-reducer';
 import { withRouter } from 'react-router';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
+import { compose } from 'redux';
 
 class ProfileContainer extends React.Component {
 
     componentDidMount() {
         const userId = this.props.match.params.userId;
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId ? userId : 2}`)
-            .then(response => {
-                this.props.setUserProfile(response.data);
-            });
+        this.props.getUserProfile(userId);
+        this.props.getStatus(userId);
     }
 
     render() {
         return (
             <Profile
                 {...this.props}
-                // profile={this.props.profile}
             />
         );
     }
 }
 
 const mapStateToProps = state => ({
-    profile: state.profilePage.profile
+    profile: state.profilePage.profile,
+    status: state.profilePage.status
 });
 
-const withUrlDataContainerComponent = withRouter(ProfileContainer);
-
-export default connect(mapStateToProps, {
-    setUserProfile
-})(withUrlDataContainerComponent);
+export default compose(
+    connect(mapStateToProps, { getUserProfile, getStatus, updateStatus }),
+    withRouter,
+    // withAuthRedirect
+)(ProfileContainer);
