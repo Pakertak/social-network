@@ -1,7 +1,7 @@
-import Button from '../../components/Button/Button';
 import classes from './Users.module.css';
 import userPhoto from '../../assets/imgs/user.png';
 import { NavLink } from 'react-router-dom';
+import Button from '../../components/FormControls/Button/Button';
 
 const Users = ({
     users,

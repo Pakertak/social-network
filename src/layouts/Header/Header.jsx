@@ -1,9 +1,11 @@
 import { NavLink } from 'react-router-dom';
+import Button from '../../components/FormControls/Button/Button';
 import classes from './Header.module.css';
 
 const Header = ({
     isAuth,
-    login
+    username,
+    logout
 }) => {
     return (
         <header className={classes.header}>
@@ -12,7 +14,7 @@ const Header = ({
             <div className={classes.loginBlock}>
                 {
                     isAuth 
-                    ? login
+                    ? <div>{username} - <Button onClick={logout}>Log out</Button></div> 
                     : <NavLink to={'/login'}>Login</NavLink>
                 }
                 

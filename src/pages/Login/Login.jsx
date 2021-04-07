@@ -1,21 +1,38 @@
-import Button from '../../components/Button/Button';
+import Button from '../../components/FormControls/Button/Button';
 import classes from './Login.module.css';
 import { Field, reduxForm } from 'redux-form';
+import Input from '../../components/FormControls/Textarea/Input';
+import { required } from '../../utils/validators';
+import { connect } from 'react-redux';
+import { login } from '../../redux/reducers/auth-reducer';
+import { Redirect } from 'react-router';
 
 const LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit} className={classes.login}>
             <div>
-                <Field type={"text"} placeholder={"Login"} name={"login"} component={"input"}/>
+                <Field
+                    type={"text"}
+                    placeholder={"Email"}
+                    name={"email"}
+                    component={Input}
+                    validate={[required]} />
             </div>
             <div>
-                <Field type={"text"} placeholder={"Login"} name={"password"} component={"input"}/>
+                <Field
+                    placeholder={"Password"}
+                    name={"password"}
+                    type={"password"}
+                    component={Input}
+                    validate={[required]} />
             </div>
             <div>
-                <Field type={"checkbox"} name={"rememberMe"} component={"input"}/> remember me
-                </div>
-
-            <div>
+                <Field type={"checkbox"}
+                    name={"rememberMe"}
+                    component={Input} /> remember me
+            </div>
+            {props.error && <div className={'form-summary-error'}>{props.error}</div>
+}            <div>
                 <Button>Login</Button>
             </div>
         </form>
@@ -26,10 +43,14 @@ const LoginReduxForm = reduxForm({
     form: 'login'
 })(LoginForm);
 
-const Login = () => {
+const Login = (props) => {
 
     const onSubmit = (formData) => {
-        console.log('Submit: ', formData);
+        props.login(formData.email, formData.password, formData.rememberMe);
+    }
+
+    if (props.isAuth) {
+        return <Redirect to={"/profile"} />;
     }
     return (
         <div>
@@ -38,6 +59,8 @@ const Login = () => {
         </div>
     );
 }
+const mapStateToProps = (state) => ({
+    isAuth: state.auth.isAuth
+});
 
-
-export default Login;
+export default connect(mapStateToProps, { login })(Login);

@@ -1,0 +1,7 @@
+.invalid {
+    border: 2px solid red;
+}
+.errorText {
+    font-size: 12px;
+    color: red;
+}
